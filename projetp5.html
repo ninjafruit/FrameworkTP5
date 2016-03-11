@@ -1,0 +1,48 @@
+<!doctype html>
+<html ng-app>
+<head>
+<script type="text/javascript">
+    function AlcoolController($scope){
+        $scope.name="Quel est votre nom ?"
+        $scope.age="Quel est votre age ?"
+        $scope.participation="Quel est votre participation ?"
+        $scope.alcools=['vodka','gin','tequila'];
+        $scope.addAlcool=function(){
+            $scope.alcools.push($scope.newAlcool);
+        }
+        $scope.deleteAlcool=function(index){
+            $scope.alcools.splice(index, 1);
+        }
+    }
+</script>
+</head>
+<body>
+<title>HH#4</title>
+<h2>Fiche participant</h2>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js"></script>
+<div ng-controller="AlcoolController">
+    Enter Your Name : <input type="text" ng-model="name">
+    Enter Your Age : <input type="text" ng-model="age">
+    Enter Your Participation : <input type="text" ng-model="participation">
+    Select an alcool :
+        <select ng-model="selectedAlcool" ng-options="alcool for alcool in alcools">
+        </select>
+    <hr/>
+    List of Alcools :
+    <ul>
+        <li ng-repeat="alcool in alcools">{{alcool}}
+        <button ng-click="deleteAlcool($index)">Delete</button>
+        </li>
+    </ul>
+    <hr />
+    Name : {{name}}<br />
+    Age : {{age}}<br />
+    Participation : {{participation}}<br />
+    Selected alcool : {{selectedAlcool}}
+    <hr />
+    Add more alcools :
+        <input type="text" ng-model="newAlcool">
+        <button ng-click="addAlcool()">Add</button></br>
+</div>
+</body>
+</html>
